@@ -1,13 +1,20 @@
+"use client"
 import { Button, Card } from "@heroui/react";
 import Image from "next/image";
 import bazarHero from "../images/bazar-hero.png";
 const HeroPage = () => {
-    const formattedDate =new  Date().toLocaleDateString("bn-BD", {
+    const formattedDate = new Date().toLocaleDateString("bn-BD", {
         weekday: "long",
         day: "numeric",
         month: "long",
         year: "numeric",
     });
+
+    const handleScrollToContent = () => {
+        document.getElementById("all-products")?.scrollIntoView({
+            behavior: "smooth",
+        });
+    }
     return (
         <section className="  px-1 py-8">
             <div className="mx-auto max-w-7xl">
@@ -30,12 +37,12 @@ const HeroPage = () => {
                                 বাজারভিত্তিক বিস্তারিত, চাহিদা, সরবরাহ এবং দামের
                                 পরিবর্তন এক জায়গায়।
                             </p>
-                            <Button className="mt-4 rounded-lg bg-[#078b43] px-5 font-semibold text-white ">
+                            <Button className="mt-4 rounded-lg bg-[#078b43] px-5 font-semibold text-white " onClick={handleScrollToContent}>
                                 সব দাম দেখুন
                             </Button>
                         </div>
                         <div>
-                             <Image
+                            <Image
                                 src={bazarHero}
                                 width={300}
                                 height={200}

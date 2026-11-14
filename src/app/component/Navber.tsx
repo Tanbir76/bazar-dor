@@ -10,7 +10,7 @@ import { Icatagory } from "@/type/type";
 
 export default function Navber() {
     const pathname = usePathname();
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    // const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { data: session, isPending } = useSession();
 
     const [categories, setCategories] = useState<Icatagory[]>([]);
@@ -22,6 +22,7 @@ export default function Navber() {
         };
         fetchCategories();
     }, []);
+
 
 
 
@@ -96,62 +97,30 @@ export default function Navber() {
     return (
         <div>
 
-            <nav className="sticky top-0 pt-2 pb-2 z-40 w-full border-b border-separator bg-white backdrop-blur-lg">
-                <header className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+            <nav className=" pt-4 pb-2 z-40 w-full  border-separator bg-white backdrop-blur-lg">
+                <header className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
                     <div className="flex items-center gap-4">
-                        <button
-                            className="md:hidden"
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            aria-label="Toggle menu"
-                            aria-expanded={isMenuOpen}
-                        >
-                            <span className="sr-only text-black">Menu</span>
-                            <svg
-                                className="h-6 w-6"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                {isMenuOpen ? (
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                ) : (
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M4 6h16M4 12h16M4 18h16"
-                                    />
-                                )}
-                            </svg>
-                        </button>
+                     
                         <div>
-                            <div className="flex items-center gap-1">
-                                <span className=""><GiShoppingCart className="bg-green-600 rounded text-3xl p-1 text-black " /></span>
-                                <p className="font-bold text-black">Ba<span className="text-green-400">z</span>ar <span className="text-green-400">D</span>or</p>
-                            </div>
+                            <Link href="/" >
+                                <div className="flex items-center gap-1">
+                                    <span className=""><GiShoppingCart className="bg-green-600 rounded text-3xl p-1 text-black " /></span>
+                                    <p className="font-bold text-xl text-black">Ba<span className="text-green-400">z</span>ar <span className="text-green-400">D</span>or</p>
+                                </div>
+                            </Link>
                             <span className="text-gray-800 text-[12px] ">{formattedDate}</span>
                         </div>
                     </div>
 
-                    <div className="hidden items-center gap-4 md:flex">
-                        {authLink}
-                    </div>
-                </header>
-                {isMenuOpen && (
-                    <div className="border-t border-separator md:hidden">
-                        <ul className="flex flex-col gap-2 p-4">
-
-                            <li className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
+                   <div>
+                        <ul>
+                            <li>
                                 {authLink}
                             </li>
                         </ul>
                     </div>
-                )}
+                </header>
+            
                 <div className="max-w-7xl mx-auto">
 
                     <Separator className="max-w-7xl mx-atuo bg-slate-100" />

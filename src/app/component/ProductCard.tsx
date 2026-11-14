@@ -1,7 +1,6 @@
 "use client";
 
 import { Card, Chip, Separator } from "@heroui/react";
-import { Clock, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { IProducts } from "@/type/type";
 
@@ -11,7 +10,7 @@ export default function ProductCard({ product }: { product: IProducts }) {
     const isDown = product.change.dir === "down";
 
     return (
-        <Link href={`/product/${product.slug}`} className="block h-full group">
+        <Link href={`/product/${product.id}`} className="block h-full group">
             <Card className="h-full p-5 rounded-3xl bg-white border border-slate-200/80 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_10px_30px_rgba(15,23,42,0.08)] hover:border-blue-200 transition-all flex flex-col justify-between">
                 {/* Top Part: Icon, Category, Route & Duration */}
                 <Card.Content className="p-0 flex flex-col gap-4">

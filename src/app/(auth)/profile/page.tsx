@@ -48,15 +48,18 @@ console.log(user)
         </div>
       </Card>
       <div className="mt-5 object-cover " >
+
         
 
-        {show && <Card><Form className="flex w-[90%] flex-col gap-4" onSubmit={handleUpdateProfile}>
+        {show && <Card>
+          <h1 className="text-xl">তথ্য</h1>
+          <Form className="flex w-[90%] flex-col gap-4" onSubmit={handleUpdateProfile}>
           <TextField
             name="name"
             type="name"
 
           >
-            <Label>নাম</Label>
+            
             <Input placeholder="আপনার সম্পূর্ণ নাম" />
             <FieldError />
           </TextField>
