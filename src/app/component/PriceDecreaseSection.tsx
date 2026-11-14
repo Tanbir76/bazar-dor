@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { IProducts } from "@/type/type";
 import ProductCard from "./ProductCard";
 
-const FaredecreaseSection = () => {
+const PriceDecreaseSection = () => {
   const [topIncreasedRoutes, setTopIncreasedRoutes] = useState<IProducts[]>([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -74,4 +74,4 @@ const FaredecreaseSection = () => {
   );
 };
 
-export default FaredecreaseSection;
+export default PriceDecreaseSection;

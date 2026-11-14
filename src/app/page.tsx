@@ -1,13 +1,16 @@
-import FaredecreaseSection from "./component/FaredecreaseSection";
-import FareIncreaseSection from "./component/FareIncreaseSection";
+
 import HeroPage from "./component/Hero";
+import PriceIncreaseSection from "./component/PriceIncreaseSection";
+import PriceDecreaseSection from "./component/PriceDecreaseSection";
+import AllProductsSection from "./component/AllProductsSection";
 
 export default function Home() {
   return (
    <div className="bg-[#f1f6f2]">
     <HeroPage />
-    <FareIncreaseSection />
-    <FaredecreaseSection />
+    <PriceIncreaseSection />
+    <PriceDecreaseSection />
+    <AllProductsSection />
    </div>
   );
 }
