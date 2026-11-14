@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navber from "./component/Navber";
+import { Toaster } from "react-hot-toast";
+import Marquee from "react-fast-marquee";
+import Marque from "./component/Marque";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,8 +28,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        
+        <Navber />
+        <Marque />
+        <main>
         {children}
+
+        </main>
+        
+          <Marquee />
+        <Toaster />
         </body>
     </html>
   );
