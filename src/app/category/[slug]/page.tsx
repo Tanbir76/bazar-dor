@@ -47,44 +47,34 @@ const CategoryDetailsPage = async ({
     }
 
     return (
-        <main className="min-h-screen w-full bg-[#f1f6f2] px-4 py-6 sm:px-6 sm:py-10">
-            <div className="mx-auto max-w-6xl space-y-4">
+     <main className="min-h-screen w-full bg-[#f1f6f2] px-4 py-6 sm:px-6 sm:py-10">
+        <div className="mx-auto max-w-6xl space-y-4">
 
-                {/* Header Card */}
-                <div className="flex items-center gap-3 rounded-xl border border-[#e8eee9] bg-white px-4 py-3">
-                    <div className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-full border border-black">
-                        <div className="flex h-full w-full flex-col">
-                            <div className="h-1/2 bg-white" />
-                            <div className="flex-1 bg-[#ed1c24]" />
-                        </div>
-                    </div>
-                    <div>
-                        <h2 className="text-xl font-semibold text-[#26352d]">
-                            {products[0].categoryNameBn}
-                        </h2>
-                        <p className="text-[11px] text-gray-500">
-                            {products[0].categoryNameBn} এর বাজারদর ও বিস্তারিত
-                        </p>
+            {/* Header Card */}
+            <div className="flex items-center gap-3 rounded-xl border border-[#e8eee9] bg-white px-4 py-3">
+                <div className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-full border border-black">
+                    <div className="flex h-full w-full flex-col">
+                        <div className="h-1/2 bg-white" />
+                        <div className="flex-1 bg-[#ed1c24]" />
                     </div>
                 </div>
 
-                {/* Filter Card */}
-               <CategoryProductList products={products} />
+                <div>
+                    <h2 className="text-xl font-semibold text-[#26352d]">
+                        {products[0].categoryNameBn}
+                    </h2>
 
-                {/* Products */}
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                    {products.map((product) => (
-                        <Link
-                            href={`/products/${product.slug}`}
-                            key={product.id}
-                        >
-                            <ProductCard key={product.id} product={product}/>
-                            
-                        </Link>
-                    ))}
+                    <p className="text-[11px] text-gray-500">
+                        {products[0].categoryNameBn} এর বাজারদর ও বিস্তারিত
+                    </p>
                 </div>
             </div>
-        </main>
+
+            {/* Sorting + Products */}
+            <CategoryProductList products={products} />
+
+        </div>
+    </main>
     );
 };
 
