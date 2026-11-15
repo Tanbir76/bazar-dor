@@ -18,13 +18,13 @@ const Marque = () => {
         fetchCategories();
     }, []);
     return (
-        <div className="w-full bg-white text-black flex items-center h-11 overflow-hidden  border-slate-800">
+        <div className="w-full text-black flex items-center h-11 overflow-hidden  border-slate-800">
             {/* Scrolling Marquee Section */}
             <Marquee
                 pauseOnHover={true}
                 speed={45}
                 gradient={false}
-                className="flex items-center h-full overflow-hidden"
+                className="flex items-center h-full overflow-hidden  "
             >
                 {categories.map((item) => {
                     const isUp = item.change.dir === "up";
@@ -34,7 +34,7 @@ const Marque = () => {
                         <Link
                             key={item.id}
                             href={`/product/${item.id}`}
-                            className="flex items-center gap-2 mx-3 px-3 py-1 rounded-lg hover:bg-slate-800/80 transition-colors whitespace-nowrap text-xs sm:text-sm"
+                            className="flex items-center gap-2 mx-3 px-3 py-1 rounded-2xl border  hover:bg-slate-800/80 transition-colors whitespace-nowrap text-xs sm:text-sm"
                         >
                             {/* Transport Icon */}
                             <span className="text-base leading-none">{item.image}</span>
