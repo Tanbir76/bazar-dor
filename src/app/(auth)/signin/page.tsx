@@ -21,10 +21,18 @@ export default function SingInPage() {
             callbackURL: "/",
         })
     }
+        const handleGoogleSignIn = async() => {
+            const googleData = await signIn.social({
+                provider: "google",
+            });
+            console.log(googleData)
+            
+        }
         const handleGithubSignIn =async()=>{
          const gitData = await signIn.social({
-        provider: "github"
-    })
+        provider: "github",
+    });
+    console.log(gitData)
 
     }
 
@@ -97,6 +105,7 @@ export default function SingInPage() {
                         <Button
                             type="button"
                             className="border-[#e0e8e2] text-xs"
+                            onClick={handleGoogleSignIn}
 
                         >
                             <FcGoogle />Google দিয়ে সাইন ইন করুন

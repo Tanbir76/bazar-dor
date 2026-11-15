@@ -58,7 +58,7 @@ export default function Navber() {
                     </Avatar>
                 </Dropdown.Trigger>
                 <Dropdown.Popover>
-                    <div className=" pt-3 pb-1">
+                    <div className="pl-2 pt-3 pb-1">
                         <div className="flex items-center gap-2">
                             <Avatar size="sm">
                                 <Avatar.Image
@@ -76,15 +76,14 @@ export default function Navber() {
                     <Dropdown.Menu>
                         <Dropdown.Item id="profile" textValue="Profile">
                             <Link href={'/profile'} className="block py-2">
+                            <div>
                                 Profile
+                            </div>
                             </Link>
                         </Dropdown.Item>
-
-
-
                         <Dropdown.Item id="logout" textValue="Logout" variant="danger">
-                            <div className="flex w-full items-center justify-between gap-2">
-                                <Button onClick={handleSignOut} className='bg-red-400'>Log Out</Button>
+                            <div className="flex w-full items-center justify-between gap-2" onClick={handleSignOut}>
+                                Log Out
                                 <ArrowRightFromSquare className="size-3.5 text-danger" />
                             </div>
                         </Dropdown.Item>
