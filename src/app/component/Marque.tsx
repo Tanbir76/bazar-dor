@@ -33,7 +33,7 @@ const Marque = () => {
                     return (
                         <Link
                             key={item.id}
-                            href={`/product/${item.slug}`}
+                            href={`/product/${item.id}`}
                             className="flex items-center gap-2 mx-3 px-3 py-1 rounded-lg hover:bg-slate-800/80 transition-colors whitespace-nowrap text-xs sm:text-sm"
                         >
                             {/* Transport Icon */}

@@ -20,7 +20,11 @@ export default function SingInPage() {
             password: data.password as string,
             callbackURL: "/",
         })
-        console.log(resData, error);
+    }
+        const handleGithubSignIn =async()=>{
+         const gitData = await signIn.social({
+        provider: "github"
+    })
 
     }
 
@@ -101,6 +105,7 @@ export default function SingInPage() {
                         <Button
                             type="button"
                             className="border-[#e0e8e2] text-xs"
+                            onClick={handleGithubSignIn}
 
                         >
                             <ImGithub className="text-black"/>GitHub দিয়ে সাইন ইন করুন

@@ -37,7 +37,13 @@ export default function SingUpPage() {
         const resData = await signIn.social({
             provider: "google",
         });
-        console.log(resData)
+    }
+    const handleGithubSignIn =async()=>{
+         const gitData = await signIn.social({
+        provider: "github"
+    })
+
+
     }
 
     return (
@@ -134,6 +140,7 @@ export default function SingUpPage() {
                         <Button
                             type="button"
                             className="border-[#e0e8e2] text-xs"
+                            onClick={handleGithubSignIn}
 
                         >
                             <ImGithub className="text-black" />GitHub দিয়ে চালিয়ে যান
