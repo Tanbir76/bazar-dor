@@ -104,7 +104,7 @@ export default function Navber() {
 
     return (
        
-            <nav className="sticky top-0 z-[999] w-full pt-4 pb-2 bg-white/95 backdrop-blur-lg">
+            <nav className="sticky top-0 z-[999] w-full pt-4 px-2 md:px-1 pb-2 bg-white/95 backdrop-blur-lg">
                 <header className="mx-auto flex h-16 max-w-7xl items-center justify-between px-2">
                     <div className="flex items-center gap-4">
                         <div>
@@ -133,7 +133,7 @@ export default function Navber() {
                     {/*dynamic catagory*/}
                     <nav
                         aria-label="Category Navigation"
-                        className="max-w-7xl flex items-center gap-5 sm:gap-8 py-2.5 overflow-x-auto no-scrollbar"
+                        className="max-w-7xl flex items-center ml-2 ms:ml-1 gap-5 sm:gap-8 py-2.5 overflow-x-auto no-scrollbar"
                     >
                         {categories.map((cat) => {
                             const isActive =

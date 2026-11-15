@@ -6,6 +6,7 @@ import { Check, Eye, EyeSlash } from "@gravity-ui/icons";
 import { Button, Card, FieldError, Form, Input, InputGroup, Label, TextField } from "@heroui/react";
 import Link from "next/link";
 import { SyntheticEvent, useState } from "react";
+import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { ImGithub } from "react-icons/im";
 
@@ -21,19 +22,35 @@ export default function SingInPage() {
             callbackURL: "/",
         })
     }
-        const handleGoogleSignIn = async() => {
+    const handleGoogleSignIn = async () => {
+        try {
             const googleData = await signIn.social({
                 provider: "google",
             });
-            
+
+            toast.success("Google sign-in successful!");
+        } catch (error: unknown) {
+            const message = error instanceof Error
+                ? error.message
+                : "Logout failed!";
+            toast.error(message);
         }
-        const handleGithubSignIn =async()=>{
-         const gitData = await signIn.social({
-        provider: "github",
-    });
+    };
 
+    const handleGithubSignIn = async () => {
+        try {
+            const gitData = await signIn.social({
+                provider: "github",
+            });
+
+            toast.success("GitHub sign-in successful!");
+        } catch (error: unknown) {
+            const message = error instanceof Error
+                ? error.message
+                : "Logout failed!";
+            toast.error(message);
+        }
     }
-
     return (
         <div className="h-full flex items-center justify-center px-4 py-10">
             <div className="max-w-5xl mx-auto px-4 sm:px-6">
@@ -42,7 +59,7 @@ export default function SingInPage() {
                         সাইন ইন করুন
                     </h1>
                     <p className="text-sm text-gray-500 mt-1">
-                        নিচের ফর্মটি পূরণ করে সাইন ইন করুন 
+                        নিচের ফর্মটি পূরণ করে সাইন ইন করুন
                     </p>
                 </div>
                 <Card>
@@ -115,13 +132,13 @@ export default function SingInPage() {
                             onClick={handleGithubSignIn}
 
                         >
-                            <ImGithub className="text-black"/>GitHub দিয়ে সাইন ইন করুন
+                            <ImGithub className="text-black" />GitHub দিয়ে সাইন ইন করুন
                         </Button>
                     </div>
                     <div className="text-center">
                         <p className="text-gray-400 text-[15px]">অ্যাকাউন্ট আছে? <span className="text-black" ><Link href='/signin'>SignUp</Link></span></p>
                     </div>
-                  
+
                 </Card>
                 <p className="text-center text-xs text-gray-400 mt-5">
                     © ২০২৬ · আপনার তথ্য নিরাপদে সংরক্ষিত থাকবে

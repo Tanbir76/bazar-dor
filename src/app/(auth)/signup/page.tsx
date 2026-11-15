@@ -32,17 +32,34 @@ export default function SingUpPage() {
             toast.error(error.message || "Something went wrong!")
         }
     }
-    const handleGoogleSignIn = async() => {
-        const resData = await signIn.social({
-            provider: "google",
-        });
-    }
-    const handleGithubSignIn =async()=>{
-         const gitData = await signIn.social({
-        provider: "github"
-    })
+    const handleGoogleSignIn = async () => {
+        try {
+            const googleData = await signIn.social({
+                provider: "google",
+            });
 
+            toast.success("Google sign-in successful!");
+        } catch (error: unknown) {
+            const message = error instanceof Error
+                ? error.message
+                : "Logout failed!";
+            toast.error(message);
+        }
+    };
 
+    const handleGithubSignIn = async () => {
+        try {
+            const gitData = await signIn.social({
+                provider: "github",
+            });
+
+            toast.success("GitHub sign-in successful!");
+        } catch (error: unknown) {
+            const message = error instanceof Error
+                ? error.message
+                : "Logout failed!";
+            toast.error(message);
+        }
     }
 
     return (
