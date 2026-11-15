@@ -25,14 +25,12 @@ export default function SingInPage() {
             const googleData = await signIn.social({
                 provider: "google",
             });
-            console.log(googleData)
             
         }
         const handleGithubSignIn =async()=>{
          const gitData = await signIn.social({
         provider: "github",
     });
-    console.log(gitData)
 
     }
 

@@ -31,7 +31,6 @@ export default function SingUpPage() {
         } else if (error) {
             toast.error(error.message || "Something went wrong!")
         }
-        console.log(resData, error)
     }
     const handleGoogleSignIn = async() => {
         const resData = await signIn.social({
