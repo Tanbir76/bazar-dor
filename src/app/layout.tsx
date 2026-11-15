@@ -30,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <Navber />
         <Marque />
-        <main>
+        <main className="bg-[#f1f6f2]">
         {children}
 
         </main>

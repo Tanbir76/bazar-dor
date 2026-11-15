@@ -16,5 +16,5 @@ if(!user){
 // Alternatively, you can use a default export:
 // export default function proxy(request: NextRequest) { ... }
 export const config = {
-  matcher:['/profile' , '/detailes'],
+  matcher:['/profile',"/product/:path*"],
 }

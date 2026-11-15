@@ -6,7 +6,7 @@ import AllProductsSection from "./component/AllProductsSection";
 
 export default function Home() {
   return (
-   <div className="bg-[#f1f6f2]">
+   <div>
     <HeroPage />
     <PriceIncreaseSection />
     <PriceDecreaseSection />

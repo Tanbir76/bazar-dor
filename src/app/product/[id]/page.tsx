@@ -106,7 +106,7 @@ const ProductDetailsPage = async ({
                         </p>
 
                         <h2 className="mt-1 text-2xl font-black text-[#26352d]">
-                            ৳{product.today.toLocaleString("bn-BD")} <span className="text-[12px] text-gray-400"> টাকা / { product.unit === "kg" ? "কেজি" :
+                            {product.today.toLocaleString("bn-BD")} <span className="text-[12px] text-gray-400"> টাকা / { product.unit === "kg" ? "কেজি" :
                                          product.unit === "piece" ? "পিস" :
                                          product.unit === "liter" ? "লিটার" :
                                          product.unit === "gram" ? "গ্রাম" :
@@ -154,7 +154,7 @@ const ProductDetailsPage = async ({
                                 </p>
 
                                 <h3 className={`mt-1 text-xl font-bold ${item.color}`}>
-                                    ৳{Math.floor(item.price).toLocaleString("bn-BD")}
+                                    {Math.floor(item.price).toLocaleString("bn-BD")} <span className="ml-1 text-[10px] font-normal text-gray-500" >টাকা /</span>
                                     <span className="ml-1 text-[10px] font-normal text-gray-500">
                                         { product.unit === "kg" ? "কেজি" :
                                          product.unit === "piece" ? "পিস" :
@@ -223,15 +223,15 @@ const ProductDetailsPage = async ({
                                             </td>
 
                                             <td className="border-b border-r border-[#e8eee9] px-3 py-3 text-right text-green-700">
-                                                ৳{market.min.toLocaleString("bn-BD")}
+                                                {market.min.toLocaleString("bn-BD")}<span className="ml-1 text-[8px] font-normal text-gray-500" >টাকা</span>
                                             </td>
 
-                                            <td className="border-b border-r border-[#e8eee9] px-3 py-3 text-right text-gray-700">
-                                                ৳{market.max.toLocaleString("bn-BD")}
+                                            <td className="border-b border-r border-[#e8eee9] px-3 py-3 text-right text-gray-700 ">
+                                                {market.max.toLocaleString("bn-BD")}<span className="ml-1 text-[8px] font-normal text-gray-500" >টাকা</span>
                                             </td>
 
-                                            <td className="border-b border-[#e8eee9] px-3 py-3 text-right font-semibold text-gray-800">
-                                                ৳{(Math.floor(market.min + market.max) / 2).toLocaleString("bn-BD") }
+                                            <td className="border-b border-[#e8eee9] px-3 py-3 text-right font-semibold text-gray-800 flex justify-center items-center">
+                                                {(Math.floor(market.min + market.max) / 2).toLocaleString("bn-BD") }<span className="ml-1 text-[8px] font-normal text-gray-500" >টাকা</span>
 
                                             </td>
                                         </tr>

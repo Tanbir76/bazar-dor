@@ -58,7 +58,7 @@ export default function Navber() {
                     </Avatar>
                 </Dropdown.Trigger>
                 <Dropdown.Popover>
-                    <div className="px-3 pt-3 pb-1">
+                    <div className=" pt-3 pb-1">
                         <div className="flex items-center gap-2">
                             <Avatar size="sm">
                                 <Avatar.Image
@@ -91,8 +91,8 @@ export default function Navber() {
                     </Dropdown.Menu>
                 </Dropdown.Popover>
             </Dropdown>) : <>
-                <Link href="../signin" className="mr-3 text-[1rem]">Login</Link>
-                <Link href="../signup"><Button className="bg-green-600">Sign Up</Button></Link>
+                <Link href="../signin" className="mr-3 text-[1rem]">সাইন ইন</Link>
+                <Link href="../signup"><Button className="bg-green-600">সাইন আপ</Button></Link>
             </>
         }
     </>
@@ -107,12 +107,11 @@ export default function Navber() {
         <div>
 
             <nav className=" pt-4 pb-2 z-40 w-full  border-separator bg-white backdrop-blur-lg">
-                <header className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+                <header className="mx-auto flex h-16 max-w-7xl items-center justify-between px-2">
                     <div className="flex items-center gap-4">
-
                         <div>
                             <Link href="/" >
-                                <div className="flex items-center gap-1">
+                                <div className="flex items-center gap-1 mr-2">
                                     <span className=""><GiShoppingCart className="bg-green-600 rounded text-3xl p-1 text-black " /></span>
                                     <p className="font-bold text-xl text-black">বাজার দর</p>
                                 </div>

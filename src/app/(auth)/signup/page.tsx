@@ -41,7 +41,7 @@ export default function SingUpPage() {
     }
 
     return (
-        <div className=" h-full flex items-center justify-center bg-[#f1f6f2] px-4 py-10">
+        <div className=" h-full flex items-center justify-center px-4 py-10">
             <div className="max-w-5xl mx-auto px-4 sm:px-6">
                 <div className="text-center mb-5">
                     <h1 className="text-2xl font-bold text-[#17251c]">
