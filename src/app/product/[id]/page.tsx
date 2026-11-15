@@ -106,15 +106,15 @@ const ProductDetailsPage = async ({
                         </p>
 
                         <h2 className="mt-1 text-2xl font-black text-[#26352d]">
-                            {product.today.toLocaleString("bn-BD")} <span className="text-[12px] text-gray-400"> টাকা / { product.unit === "kg" ? "কেজি" :
-                                         product.unit === "piece" ? "পিস" :
-                                         product.unit === "liter" ? "লিটার" :
-                                         product.unit === "gram" ? "গ্রাম" :
-                                         product.unit
-                                         }</span>
+                            {product.today.toLocaleString("bn-BD")} <span className="text-[12px] text-gray-400"> টাকা / {product.unit === "kg" ? "কেজি" :
+                                product.unit === "piece" ? "পিস" :
+                                    product.unit === "liter" ? "লিটার" :
+                                        product.unit === "gram" ? "গ্রাম" :
+                                            product.unit
+                            }</span>
                         </h2>
 
-                        
+
 
                         <div className={`mt-1 flex items-center justify-center gap-1 text-[10px] font-semibold ${product.change.dir === "up"
                             ? "text-red-500"
@@ -156,12 +156,12 @@ const ProductDetailsPage = async ({
                                 <h3 className={`mt-1 text-xl font-bold ${item.color}`}>
                                     {Math.floor(item.price).toLocaleString("bn-BD")} <span className="ml-1 text-[10px] font-normal text-gray-500" >টাকা /</span>
                                     <span className="ml-1 text-[10px] font-normal text-gray-500">
-                                        { product.unit === "kg" ? "কেজি" :
-                                         product.unit === "piece" ? "পিস" :
-                                         product.unit === "liter" ? "লিটার" :
-                                         product.unit === "gram" ? "গ্রাম" :
-                                         product.unit
-                                         }
+                                        {product.unit === "kg" ? "কেজি" :
+                                            product.unit === "piece" ? "পিস" :
+                                                product.unit === "liter" ? "লিটার" :
+                                                    product.unit === "gram" ? "গ্রাম" :
+                                                        product.unit
+                                        }
                                     </span>
                                 </h3>
 
@@ -173,32 +173,64 @@ const ProductDetailsPage = async ({
 
                     </div>
 
+
                     {/* Market Table */}
                     <h2 className="mb-3 mt-5 text-sm font-bold text-[#26352d]">
                         বাজারভিত্তিক আজকের দাম
                     </h2>
 
-                    <div className="overflow-x-auto rounded-xl border border-[#e8eee9]">
-                        <table className="w-full min-w-[650px] border-collapse text-xs">
+                    {/* Mobile: 3 columns */}
+                    <div className="grid grid-cols-3 gap-2 sm:hidden">
+                        {markets.length > 0 ? (
+                            markets.map((market, index) => (
+                                <div
+                                    key={index}
+                                    className="min-w-0 rounded-lg border border-[#e8eee9] bg-white p-2"
+                                >
+                                    <p className="truncate text-ms font-bold text-gray-800">
+                                        {market.division}
+                                    </p>
+                                    <p className="mt-1 truncate text-[12px] text-gray-500">
+                                        {market.market}
+                                    </p>
+                                    <div className="mt-3 space-y-1 text-[10px]">
+                                        <p className="truncate text-gray-700">
+                                            সর্বোচ্চ: {market.max.toLocaleString("bn-BD")} টাকা
+                                        </p>
+                                        <p className="truncate text-green-700">
+                                            সর্বনিম্ন: {market.min.toLocaleString("bn-BD")} টাকা
+                                        </p>
+                                        <p className="truncate font-semibold text-gray-800">
+                                            গড়: {Math.floor((market.min + market.max) / 2).toLocaleString("bn-BD")} টাকা
+                                        </p>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <p className="col-span-3 py-6 text-center text-xs text-gray-500">
+                                বর্তমানে কোনো বাজারের তথ্য পাওয়া যায়নি।
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Desktop: Full table */}
+                    <div className="hidden overflow-x-auto rounded-xl border border-[#e8eee9] sm:block">
+                        <table className="w-full border-collapse text-xs">
                             <thead>
                                 <tr className="bg-[#f8faf8] text-gray-600">
-                                    <th className="border-b border-r border-[#e8eee9] px-3 py-3 text-left font-semibold">
+                                    <th className="border-b border-r border-[#e8eee9] px-3 py-3 text-left">
                                         বাজার
                                     </th>
-
-                                    <th className="border-b border-r border-[#e8eee9] px-3 py-3 text-left font-semibold">
+                                    <th className="border-b border-r border-[#e8eee9] px-3 py-3 text-left">
                                         বিক্রেতা
                                     </th>
-
-                                    <th className="border-b border-r border-[#e8eee9] px-3 py-3 text-right font-semibold">
+                                    <th className="border-b border-r border-[#e8eee9] px-3 py-3 text-right">
                                         সর্বনিম্ন
                                     </th>
-
-                                    <th className="border-b border-r border-[#e8eee9] px-3 py-3 text-right font-semibold">
+                                    <th className="border-b border-r border-[#e8eee9] px-3 py-3 text-right">
                                         সর্বোচ্চ
                                     </th>
-
-                                    <th className="border-b border-[#e8eee9] px-3 py-3 text-right font-semibold">
+                                    <th className="border-b border-[#e8eee9] px-3 py-3 text-right">
                                         গড়
                                     </th>
                                 </tr>
@@ -209,39 +241,29 @@ const ProductDetailsPage = async ({
                                     markets.map((market, index) => (
                                         <tr
                                             key={index}
-                                            className={`transition-colors hover:bg-green-50 ${index % 2 === 0
-                                                ? "bg-white"
-                                                : "bg-[#f8faf8]"
+                                            className={`hover:bg-green-50 ${index % 2 === 0 ? "bg-white" : "bg-[#f8faf8]"
                                                 }`}
                                         >
-                                            <td className="border-b border-r border-[#e8eee9] px-3 py-3 font-medium text-gray-800">
+                                            <td className="border-b border-r border-[#e8eee9] px-3 py-3">
                                                 {market.division}
                                             </td>
-
-                                            <td className="border-b border-r border-[#e8eee9] px-3 py-3 text-gray-600">
+                                            <td className="border-b border-r border-[#e8eee9] px-3 py-3">
                                                 {market.market}
                                             </td>
-
                                             <td className="border-b border-r border-[#e8eee9] px-3 py-3 text-right text-green-700">
-                                                {market.min.toLocaleString("bn-BD")}<span className="ml-1 text-[8px] font-normal text-gray-500" >টাকা</span>
+                                                {market.min.toLocaleString("bn-BD")} টাকা
                                             </td>
-
-                                            <td className="border-b border-r border-[#e8eee9] px-3 py-3 text-right text-gray-700 ">
-                                                {market.max.toLocaleString("bn-BD")}<span className="ml-1 text-[8px] font-normal text-gray-500" >টাকা</span>
+                                            <td className="border-b border-r border-[#e8eee9] px-3 py-3 text-right">
+                                                {market.max.toLocaleString("bn-BD")} টাকা
                                             </td>
-
-                                            <td className="border-b border-[#e8eee9] px-3 py-3 text-right font-semibold text-gray-800 flex justify-center items-center">
-                                                {(Math.floor(market.min + market.max) / 2).toLocaleString("bn-BD") }<span className="ml-1 text-[8px] font-normal text-gray-500" >টাকা</span>
-
+                                            <td className="border-b border-[#e8eee9] px-3 py-3 text-right font-semibold">
+                                                {Math.floor((market.min + market.max) / 2).toLocaleString("bn-BD")} টাকা
                                             </td>
                                         </tr>
                                     ))
                                 ) : (
                                     <tr>
-                                        <td
-                                            colSpan={5}
-                                            className="px-3 py-10 text-center text-gray-500"
-                                        >
+                                        <td colSpan={5} className="px-3 py-10 text-center text-gray-500">
                                             বর্তমানে কোনো বাজারের তথ্য পাওয়া যায়নি।
                                         </td>
                                     </tr>
@@ -249,6 +271,7 @@ const ProductDetailsPage = async ({
                             </tbody>
                         </table>
                     </div>
+
 
                 </section>
             </div>
