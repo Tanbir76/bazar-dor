@@ -104,9 +104,8 @@ export default function Navber() {
     });
 
     return (
-        <div>
-
-            <nav className=" pt-4 pb-2 z-40 w-full  border-separator bg-white backdrop-blur-lg">
+       
+            <nav className="sticky top-0 z-[999] w-full pt-4 pb-2 bg-white/95 backdrop-blur-lg">
                 <header className="mx-auto flex h-16 max-w-7xl items-center justify-between px-2">
                     <div className="flex items-center gap-4">
                         <div>
@@ -160,7 +159,5 @@ export default function Navber() {
                     </nav>
                 </div>
             </nav>
-        </div>
-
     );
 }
