@@ -4,6 +4,7 @@
 import { signIn } from "@/lib/auth-client";
 import { Check, Eye, EyeSlash } from "@gravity-ui/icons";
 import { Button, Card, FieldError, Form, Input, InputGroup, Label, TextField } from "@heroui/react";
+import Link from "next/link";
 import { SyntheticEvent, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { ImGithub } from "react-icons/im";
@@ -106,7 +107,7 @@ export default function SingInPage() {
                         </Button>
                     </div>
                     <div className="text-center">
-                        <p className="text-gray-400 text-[15px]">অ্যাকাউন্ট আছে? <span className="text-black" >Sign Up </span></p>
+                        <p className="text-gray-400 text-[15px]">অ্যাকাউন্ট আছে? <span className="text-black" ><Link href='/signin'>SignUp</Link></span></p>
                     </div>
                   
                 </Card>

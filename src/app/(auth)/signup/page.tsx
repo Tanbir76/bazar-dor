@@ -4,6 +4,7 @@
 import { signIn, signUp } from "@/lib/auth-client";
 import { Check, Eye, EyeSlash } from "@gravity-ui/icons";
 import { Button, Card, FieldError, Form, Input, InputGroup, Label, TextField } from "@heroui/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SyntheticEvent, useState } from "react";
 import toast from "react-hot-toast";
@@ -139,7 +140,7 @@ export default function SingUpPage() {
                         </Button>
                     </div>
                     <div className="text-center">
-                        <p className="text-gray-400 text-[15px]">অ্যাকাউন্ট আছে? <span className="text-black">Sign in </span></p>
+                        <p className="text-gray-400 text-[15px]">অ্যাকাউন্ট আছে? <span className="text-black"> <Link href='/signin'>SignIn</Link> </span></p>
                     </div>
 
                 </Card>

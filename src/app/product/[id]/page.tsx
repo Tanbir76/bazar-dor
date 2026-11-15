@@ -1,6 +1,6 @@
 
 import { IProducts } from "@/type/type";
-import {  ChevronRight, TrendingUp, TrendingDown } from "lucide-react";
+import { ChevronRight, TrendingUp, TrendingDown } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -101,34 +101,36 @@ const ProductDetailsPage = async ({
 
                     {/* Today's Price */}
                     <div className="min-w-[120px] rounded-xl bg-[#f1f6f2] px-5 py-3 text-center">
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xm text-gray-500">
                             আজকের বাজারদর
                         </p>
 
                         <h2 className="mt-1 text-2xl font-black text-[#26352d]">
-                            ৳{product.today}
+                            ৳{product.today.toLocaleString("bn-BD")} <span className="text-[12px] text-gray-400"> টাকা / { product.unit === "kg" ? "কেজি" :
+                                         product.unit === "piece" ? "পিস" :
+                                         product.unit === "liter" ? "লিটার" :
+                                         product.unit === "gram" ? "গ্রাম" :
+                                         product.unit
+                                         }</span>
                         </h2>
 
-                        <p className="text-[10px] text-gray-500">
-                            টাকা / {product.unit}
-                        </p>
+                        
 
-                        <div className={`mt-1 flex items-center justify-center gap-1 text-[10px] font-semibold ${
-                            product.change.dir === "up"
-                                ? "text-red-500"
-                                : product.change.dir === "down"
-                                    ? "text-green-600"
-                                    : "text-gray-500"
-                        }`}>
+                        <div className={`mt-1 flex items-center justify-center gap-1 text-[10px] font-semibold ${product.change.dir === "up"
+                            ? "text-red-500"
+                            : product.change.dir === "down"
+                                ? "text-green-600"
+                                : "text-gray-500"
+                            }`}>
                             {product.change.dir === "up" ? (
-                                <TrendingUp size={12} />
+                                <TrendingUp size={14} />
                             ) : product.change.dir === "down" ? (
-                                <TrendingDown size={12} />
+                                <TrendingDown size={14} />
                             ) : null}
 
                             {product.change.dir === "flat"
                                 ? "অপরিবর্তিত"
-                                : `${product.change.dir === "up" ? "+" : "-"} ${product.change.pct}%`}
+                                : `${product.change.dir === "up" ? "+" : "-"} ${product.change.pct.toLocaleString("bn-BD")}%`}
                         </div>
                     </div>
                 </section>
@@ -147,14 +149,19 @@ const ProductDetailsPage = async ({
                                 key={item.label}
                                 className="rounded-xl border border-[#e8eee9] bg-[#fbfdfb] p-3"
                             >
-                                <p className="text-xs text-gray-500">
+                                <p className="text-ms text-gray-500">
                                     {item.label}
                                 </p>
 
                                 <h3 className={`mt-1 text-xl font-bold ${item.color}`}>
-                                    ৳{item.price.toFixed(0)}
+                                    ৳{Math.floor(item.price).toLocaleString("bn-BD")}
                                     <span className="ml-1 text-[10px] font-normal text-gray-500">
-                                        {product.unit}
+                                        { product.unit === "kg" ? "কেজি" :
+                                         product.unit === "piece" ? "পিস" :
+                                         product.unit === "liter" ? "লিটার" :
+                                         product.unit === "gram" ? "গ্রাম" :
+                                         product.unit
+                                         }
                                     </span>
                                 </h3>
 
@@ -202,11 +209,10 @@ const ProductDetailsPage = async ({
                                     markets.map((market, index) => (
                                         <tr
                                             key={index}
-                                            className={`transition-colors hover:bg-green-50 ${
-                                                index % 2 === 0
-                                                    ? "bg-white"
-                                                    : "bg-[#f8faf8]"
-                                            }`}
+                                            className={`transition-colors hover:bg-green-50 ${index % 2 === 0
+                                                ? "bg-white"
+                                                : "bg-[#f8faf8]"
+                                                }`}
                                         >
                                             <td className="border-b border-r border-[#e8eee9] px-3 py-3 font-medium text-gray-800">
                                                 {market.division}
@@ -217,15 +223,15 @@ const ProductDetailsPage = async ({
                                             </td>
 
                                             <td className="border-b border-r border-[#e8eee9] px-3 py-3 text-right text-green-700">
-                                                ৳{market.min}
+                                                ৳{market.min.toLocaleString("bn-BD")}
                                             </td>
 
                                             <td className="border-b border-r border-[#e8eee9] px-3 py-3 text-right text-gray-700">
-                                                ৳{market.max}
+                                                ৳{market.max.toLocaleString("bn-BD")}
                                             </td>
 
                                             <td className="border-b border-[#e8eee9] px-3 py-3 text-right font-semibold text-gray-800">
-                                                   ৳{((market.min + market.max) / 2).toFixed(2)}
+                                                ৳{(Math.floor(market.min + market.max) / 2).toLocaleString("bn-BD") }
 
                                             </td>
                                         </tr>

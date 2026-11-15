@@ -1,14 +1,16 @@
 'use client'
 import { useEffect, useState } from "react";
-import { Avatar, Button, Dropdown, Label, ProgressCircle, Separator } from "@heroui/react";
+import { Avatar, Button, Dropdown, Separator, Spinner } from "@heroui/react";
 import { ArrowRightFromSquare } from "@gravity-ui/icons";
 import { GiShoppingCart } from "react-icons/gi";
 import { signOut, useSession } from "@/lib/auth-client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Icatagory } from "@/type/type";
+import toast from "react-hot-toast";
 
 export default function Navber() {
+    const router = useRouter();
     const pathname = usePathname();
     // const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { data: session, isPending } = useSession();
@@ -22,18 +24,27 @@ export default function Navber() {
         };
         fetchCategories();
     }, []);
+    const handleSignOut = async () => {
+        try {
+            await signOut();
+            toast.success("Logged out successfully!");
+            router.push('/');
+
+        } catch (error: unknown) {
+            const message = error instanceof Error
+                ? error.message
+                : "Logout failed!";
+            toast.error(message);
+        }
+
+    }
 
 
 
 
     const authLink = <>
         {isPending ? (
-            <ProgressCircle aria-label="Loading" value={60}>
-                <ProgressCircle.Track>
-                    <ProgressCircle.TrackCircle />
-                    <ProgressCircle.FillCircle />
-                </ProgressCircle.Track>
-            </ProgressCircle>
+            <Spinner color="success" />
         ) : session?.user ?
             (<Dropdown>
                 <Dropdown.Trigger className="rounded-full">
@@ -69,20 +80,18 @@ export default function Navber() {
                             </Link>
                         </Dropdown.Item>
 
-                        <Dropdown.Item id="dashboard" textValue="Dashboard">
-                            <Label>Dashboard</Label>
-                        </Dropdown.Item>
+
 
                         <Dropdown.Item id="logout" textValue="Logout" variant="danger">
                             <div className="flex w-full items-center justify-between gap-2">
-                                <Button onClick={() => signOut()} className='bg-red-400'>Log Out</Button>
+                                <Button onClick={handleSignOut} className='bg-red-400'>Log Out</Button>
                                 <ArrowRightFromSquare className="size-3.5 text-danger" />
                             </div>
                         </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown.Popover>
             </Dropdown>) : <>
-                <Link href="../signin">Login</Link>
+                <Link href="../signin" className="mr-3 text-[1rem]">Login</Link>
                 <Link href="../signup"><Button className="bg-green-600">Sign Up</Button></Link>
             </>
         }
@@ -100,7 +109,7 @@ export default function Navber() {
             <nav className=" pt-4 pb-2 z-40 w-full  border-separator bg-white backdrop-blur-lg">
                 <header className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
                     <div className="flex items-center gap-4">
-                     
+
                         <div>
                             <Link href="/" >
                                 <div className="flex items-center gap-1">
@@ -112,7 +121,7 @@ export default function Navber() {
                         </div>
                     </div>
 
-                   <div>
+                    <div>
                         <ul>
                             <li>
                                 {authLink}
@@ -120,7 +129,7 @@ export default function Navber() {
                         </ul>
                     </div>
                 </header>
-            
+
                 <div className="max-w-7xl mx-auto">
 
                     <Separator className="max-w-7xl mx-atuo bg-slate-100" />
