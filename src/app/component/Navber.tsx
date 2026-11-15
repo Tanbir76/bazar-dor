@@ -105,7 +105,7 @@ export default function Navber() {
                             <Link href="/" >
                                 <div className="flex items-center gap-1">
                                     <span className=""><GiShoppingCart className="bg-green-600 rounded text-3xl p-1 text-black " /></span>
-                                    <p className="font-bold text-xl text-black">Ba<span className="text-green-400">z</span>ar <span className="text-green-400">D</span>or</p>
+                                    <p className="font-bold text-xl text-black">বাজার দর</p>
                                 </div>
                             </Link>
                             <span className="text-gray-800 text-[12px] ">{formattedDate}</span>
